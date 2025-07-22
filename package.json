@@ -1,0 +1,19 @@
+{
+  "name": "vet-backend",
+  "version": "1.0.0",
+  "description": "API para gestión de mascotas en una veterinaria ",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch ./src/index.js"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "jwt"
+  ],
+  "author": "Juan Diego López <juandiegolopezortiz4@gmail.com\u001c>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
