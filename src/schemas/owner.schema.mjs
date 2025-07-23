@@ -8,6 +8,7 @@ const ownerSchema = new mongoose.Schema( {
     phone: {
         type: String,
         required: [ true, 'El teléfono es obligatorio' ],
+        match: [ /^\d{10}$/, 'El teléfono debe tener 10 dígitos' ]
     },
     email: {
         type: String,
