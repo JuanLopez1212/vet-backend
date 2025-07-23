@@ -2,7 +2,7 @@ import pet from '../schemas/pet.schema.mjs';
 
 const getAllPets = async ( req, res ) => {
     try {
-        const pets = await pet.find().populate( 'owner', 'name', 'email' )
+        const pets = await pet.find().populate( 'owner', 'name email' )
         res.status(200).json(pets)    
     } 
     catch (error) {
@@ -13,7 +13,7 @@ const getAllPets = async ( req, res ) => {
 
 const getPetById = async ( req, res ) => {
     try {
-        const petsId = await pet.findById( req.params.id ).populate( 'owner', 'name', 'email' );
+        const petsId = await pet.findById( req.params.id ).populate( 'owner', 'name email' );
         if (!petsId) {
             return res.status(404).json({ message: 'Mascota no encontrada' });
         }

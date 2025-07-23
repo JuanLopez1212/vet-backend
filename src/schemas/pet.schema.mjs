@@ -22,7 +22,7 @@ const petSchema = new mongoose.Schema( {
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'owner',
-        required: [ false, 'El propietario es obligatorio' ]
+        required: [ true, 'El propietario es obligatorio' ]
     }    
 }, {timestamps: true } )
 
