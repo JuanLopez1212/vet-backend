@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import dbConnection from "./config/mongo.config.mjs";
 import pet from "./routes/pet.routes.mjs";
 import owner from "./routes/owner.routes.mjs";
@@ -8,6 +9,7 @@ import date from "./routes/date.routes.mjs";
 
 const app = express()
 
+app.use(cors())
 dbConnection()
 
 app.use (express.json())

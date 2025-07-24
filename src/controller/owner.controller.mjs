@@ -35,7 +35,25 @@ const getAllOwners = async ( req, res ) => {
     }
 }
 
+const deleteOwner = async ( req, res ) => {
+    try {
+        const ownerId = req.params.id
+        const deletedOwner = await owner.findByIdAndDelete( ownerId )
+
+        if ( !deletedOwner ) {
+            return res.status( 404 ).json( { message: 'Propietario no encontrado' } )
+        }
+
+        res.status( 200 ).json( { message: 'Propietario eliminado correctamente' } )    
+    } 
+    catch (error) {
+        console.error ( error )
+        res.status( 500 ).json( { message: 'Error al eliminar el propietario' } )
+    }
+}
+
 export {
     createOwner,
-    getAllOwners
+    getAllOwners,
+    deleteOwner
 }

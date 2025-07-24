@@ -2,7 +2,7 @@ import pet from '../schemas/pet.schema.mjs';
 
 const getAllPets = async ( req, res ) => {
     try {
-        const pets = await pet.find().populate( 'owner', 'name email' )
+        const pets = await pet.find().populate( 'owner', 'name email phone' )
         res.status(200).json(pets)    
     } 
     catch (error) {
@@ -13,7 +13,7 @@ const getAllPets = async ( req, res ) => {
 
 const getPetById = async ( req, res ) => {
     try {
-        const petsId = await pet.findById( req.params.id ).populate( 'owner', 'name email' );
+        const petsId = await pet.findById( req.params.id ).populate( 'owner'  );
         if (!petsId) {
             return res.status(404).json({ message: 'Mascota no encontrada' });
         }
@@ -72,9 +72,27 @@ const updatePet = async ( req, res ) => {
     }
 }
 
+const deletePet = async ( req, res ) => {
+    try {
+        const petId = req.params.id
+        const deletedPet = await pet.findByIdAndDelete( petId )
+        
+        if ( !deletedPet ) {
+            res.status( 404 ).json( { message: 'Mascota no encontrada' } )
+        }
+
+        res.status( 200 ).json({ message: 'Mascota eliminada correctamente' } )
+    } 
+    catch (error) {
+        console.error( error )
+        res.status( 500 ).json({ message: 'Error al eliminar la mascota' } )
+    }
+}
+
 export {
     getAllPets,
     getPetById,
     createPet,
-    updatePet
+    updatePet,
+    deletePet
 }
