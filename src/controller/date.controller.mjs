@@ -3,9 +3,9 @@ import vet from "../schemas/vet.schema.mjs";
 
 const createDate = async (req, res) => {
     try {
-        const { pet, reason, date, vet, state } = req.body
+        const { pet, reason, date, owner, vet, state } = req.body
         
-        if ( !pet || !reason || !date || !vet || !state ) {
+        if ( !pet || !reason || !date || !owner || !vet || !state ) {
             return res.status(400).json({ message: "Todos los campos son obligatorios" });
         }
 
@@ -13,7 +13,7 @@ const createDate = async (req, res) => {
             return res.status(400).json({ message: "Estado inválido" });
         }
 
-        const newDate = new dateModel( { pet, reason, date, vet, state } );
+        const newDate = new dateModel( { pet, reason, date, owner, vet, state } );
         const savedDate = await newDate.save();
         return res.status(201).json(savedDate);
     } 
