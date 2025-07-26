@@ -4,7 +4,7 @@ const router = Router();
 
 router.post ( '/api/date', createDate )
 router.get ( '/api/date', getAllDates )
-router.get ( '/api/date/:id', getDatesByPetId )
+router.get ( '/api/date/pet/:id', getDatesByPetId )
 router.get ( '/api/date/:id', getDateById )
 router.patch ( '/api/date/:id', updateDate )
 router.delete ( '/api/date/:id', deleteDate )
