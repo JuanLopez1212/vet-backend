@@ -55,6 +55,21 @@ const getDateById = async ( req, res ) => {
     }
 }
 
+const getDatesByPetId = async ( req, res ) => {
+    try {
+        const dates = await dateModel.find( { pet: req.params.id  } )
+        .populate( 'vet' )
+        .populate( 'pet' )    
+
+        res.status( 200 ).json( dates )
+    } 
+    catch (error) {
+        console.error( error )
+        res.status( 500 ).json( { message: 'Error al obtener las citas por mascota' } )
+    }
+}
+
+
 const updateDate = async ( req, res ) => {
     try {
         const { id } = req.params
@@ -95,5 +110,6 @@ export {
     getAllDates,
     getDateById,
     updateDate,
-    deleteDate
+    deleteDate,
+    getDatesByPetId
 }
