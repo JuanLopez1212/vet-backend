@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const dbConnection = async () => {
 
     try {
-         await mongoose.connect ('mongodb://localhost:27017/db-vet-place', {})
+         await mongoose.connect ('mongodb+srv://juanlopez:12120612@cluster0.akncooq.mongodb.net/db-vet-place', {})
 
          console.log ( 'Base de datos conectada correctamente' )
     } 

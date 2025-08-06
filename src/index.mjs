@@ -14,7 +14,6 @@ app.use(cors())
 dbConnection()
 app.use ( test )
 app.use (express.json())
-app.use ( )
 app.use ( pet )
 app.use ( owner )
 app.use ( vet )
@@ -23,3 +22,4 @@ app.use ( date )
 app.listen ( 3000, () => {
     console.log ( 'Servidor corriendo en el puerto 3000' )
 })
+
